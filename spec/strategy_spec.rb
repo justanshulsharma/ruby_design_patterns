@@ -4,6 +4,24 @@ require_relative '../lib/strategy'
 
 describe "Strategy Pattern" do
 
+  describe "Strategy Contract" do
+    it "Hero Sends Print Message to Printer" do
+      printer = double("printer")
+      allow(printer).to receive(:print)
+      hero = Hero.new printer
+      printer.should_receive(:print).with(hero.damage, hero.health, hero.skills)
+      hero.print_stats
+    end
+
+    it "BattleStats should respond to printer message" do
+      expect(BattleStats.new).to respond_to(:print)
+    end
+
+    it "SkillStats should respond to printer message" do
+      expect(SkillStats.new).to respond_to(:print)
+    end
+  end
+
   let(:hero) { Hero.new BattleStats.new }
 
   it "has damage" do
@@ -26,7 +44,7 @@ describe "Strategy Pattern" do
 
     it "can use custom ad hoc printer" do
       result = hero.print_stats do |damage, health, skills|
-       "Damage: #{damage}\nNumber of skills: #{skills.size}"
+        "Damage: #{damage}\nNumber of skills: #{skills.size}"
       end
       expect(result).to eq("Damage: 10\nNumber of skills: 3")
     end
