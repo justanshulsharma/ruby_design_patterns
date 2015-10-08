@@ -4,7 +4,7 @@ require_relative '../lib/strategy'
 
 describe "Strategy Pattern" do
 
-  let(:hero) { Hero.new }
+  let(:hero) { Hero.new BattleStats.new }
 
   it "has damage" do
     expect(hero.damage).to eq(10)
@@ -20,6 +20,7 @@ describe "Strategy Pattern" do
     end
 
     it "print skills" do
+      hero.printer = SkillStats.new
       expect(hero.print_stats(:skills)).to eq("Stealth\nDriving\nIntimidiation\n")
     end
   end
