@@ -4,13 +4,27 @@ require_relative '../lib/template_method'
 
 describe "Template Pattern Method" do
 
-  let(:hero) { Hero.new }
+  context "Default Hero" do
+    let(:hero) { Hero.new }
 
-  it "has default damage rating of 10" do
-    expect(hero.damage).to eq(10)
+    it "has default damage rating of 10" do
+      expect(hero.damage).to eq(10)
+    end
+
+    it "can attack" do
+      expect(hero.attack).to eq("Attacked dealing 10 damage.")
+    end
   end
 
-  it "can attack" do
-    expect(hero.attack).to eq("Attacked dealing 10 damage.")
+  context "Warrior Hero" do
+    let(:hero) { Hero.new :warrior }
+
+    it "has default damage rating of 15" do
+      expect(hero.damage).to eq(15)
+    end
+
+    it "can attack" do
+      expect(hero.attack).to eq("Attacked dealing 15 damage.")
+    end
   end
 end

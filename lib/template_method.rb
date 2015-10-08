@@ -1,11 +1,15 @@
 class Hero
   attr_reader :damage
 
-  def initialize
-    @damage = 10
+  def initialize(occupation = nil)
+    if occupation == :warrior
+      @damage = 15
+    else
+      @damage = 10
+    end
   end
 
   def attack
-    "Attacked dealing 10 damage."
+    "Attacked dealing #{damage} damage."
   end
 end
