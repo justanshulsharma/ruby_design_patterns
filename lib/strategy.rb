@@ -19,15 +19,34 @@ class Hero
   end
 end
 
-
-class BattleStats
+class HtmlPrinter
   def print(damage, health, skills)
+    result = header
+    result += content(damage, health, skills)
+    result += footer
+  end
+
+  def header
+    "<html>"
+  end
+
+  def footer
+    "</html>"
+  end
+
+  def content
+    raise "You must implement content"
+  end
+end
+
+class BattleStats < HtmlPrinter
+  def content(damage, health, skills)
     "Damage: #{damage}\nHealth: #{health}"
   end
 end
 
-class SkillStats
-  def print(damage, health, skills)
+class SkillStats < HtmlPrinter
+  def content(damage, health, skills)
     skills.inject("") { |result, skill| result + skill.to_s.capitalize + "\n" }
   end
 end

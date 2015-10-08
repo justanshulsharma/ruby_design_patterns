@@ -16,12 +16,12 @@ describe "Strategy Pattern" do
 
   describe "Printing Character Stats" do
     it "print battle stats by default" do
-      expect(hero.print_stats).to eq("Damage: 10\nHealth: 5")
+      expect(hero.print_stats).to eq("<html>Damage: 10\nHealth: 5</html>")
     end
 
     it "print skills" do
       hero.printer = SkillStats.new
-      expect(hero.print_stats).to eq("Stealth\nDriving\nIntimidiation\n")
+      expect(hero.print_stats).to eq("<html>Stealth\nDriving\nIntimidiation\n</html>")
     end
 
     it "can use custom ad hoc printer" do
