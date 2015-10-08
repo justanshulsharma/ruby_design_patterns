@@ -4,10 +4,14 @@ class Hero
   def initialize
     @damage = 10
     @health = 5
-    @skills = [:skills, :driving, :intimidiation]
+    @skills = [:stealth, :driving, :intimidiation]
   end
 
-  def print_stats
-    "Damage: #{damage}\nHealth: #{health}"
+  def print_stats(stats = nil)
+    if stats == :skills
+      skills.inject("") { |result, skill| result + skill.to_s.capitalize + "\n" }
+    else
+      "Damage: #{damage}\nHealth: #{health}"
+    end
   end
 end

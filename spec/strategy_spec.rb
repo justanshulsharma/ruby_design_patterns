@@ -18,11 +18,15 @@ describe "Strategy Pattern" do
     it "print battle stats by default" do
       expect(hero.print_stats).to eq("Damage: 10\nHealth: 5")
     end
+
+    it "print skills" do
+      expect(hero.print_stats(:skills)).to eq("Stealth\nDriving\nIntimidiation\n")
+    end
   end
 
   describe "Skills" do
     it "has stealth" do
-      expect(hero.skills).to include(:skills)
+      expect(hero.skills).to include(:stealth)
     end
 
     it "has driving" do
