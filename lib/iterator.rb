@@ -1,4 +1,5 @@
 class Inventory
+  include Enumerable
   attr_reader :items
 
   def initialize
@@ -10,7 +11,7 @@ class Inventory
   end
 
   def each(&block)
-   items.each(&block)
+    items.each(&block)
   end
 end
 
