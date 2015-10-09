@@ -1,24 +1,17 @@
 class Party
   attr_reader :members
 
-  def initialize(number)
+  def initialize(number, occupation)
     @members = []
-    number.times { members << create }
+    number.times { members << create(occupation) }
   end
 
 end
 
-class WarriorParty < Party
-  def create
-    Warrior.new
+class PartyFactory < Party
+  def create(occupation)
+    Object.const_get(occupation.to_s.capitalize).new
   end
-end
-
-class MageParty < Party
-  def create
-    Mage.new
-  end
-
 end
 
 class Hero
