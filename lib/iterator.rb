@@ -21,6 +21,10 @@ class Item
   def initialize
     @cost = 0
   end
+
+  def <=>(other)
+    cost <=> other.cost
+  end
 end
 
 
