@@ -48,7 +48,7 @@ describe "Observer Pattern" do
     it "activates curse on several heros" do
       hero1 = Hero.new
       hero2 = Hero.new
-      tile  = Tile.new
+      tile  = Tile.new cursed: true
 
       hero1.discover(tile)
       hero2.discover(tile)
