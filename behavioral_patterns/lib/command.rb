@@ -1,3 +1,23 @@
+class Reactor
+  def initialize
+    @functional = false
+    @right_command = %Q{
+Amplifies Shield
+Calibrated Driver
+Tested Compiler
+Install Regulator
+}
+  end
+
+  def fix(result)
+    @functional = result == @right_command
+  end
+
+  def functional?
+    @functional
+  end
+end
+
 class Computer
   attr_reader :queue
 
