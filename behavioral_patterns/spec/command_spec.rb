@@ -4,6 +4,22 @@ require_relative '../lib/command'
 
 describe 'Command Pattern' do
 
+	describe 'Undo' do
+		it 'can be undone' do
+			hero  = Hero.new
+			wood  = ChopWoodCommand.new(hero)
+			heal  = HealCharacterCommand.new(hero)
+			money = GetMoneyCommand.new(hero)
+
+
+		wood.execute
+		heal.execute
+
+		expect(hero.wood).to eq(10)
+		expect(hero.health).to eq(5)
+       		end
+	end
+
   describe 'Reactor' do
 
     it 'is fixed if commands are executed in the right order' do

@@ -1,3 +1,41 @@
+class Hero
+  attr_accessor :wood, :health, :money
+
+  def initialize
+    @wood, @health, @money = 0, 0, 0
+  end
+end
+
+class ChopWoodCommand
+  def initialize(hero)
+    @hero = hero
+  end
+
+  def execute
+    @hero.wood += 10
+  end
+end
+
+class HealCharacterCommand
+  def initialize(hero)
+    @hero = hero
+  end
+
+  def execute
+    @hero.health += 5
+  end
+end
+
+class GetMoneyCommand
+  def initialize(hero)
+    @hero = hero
+  end
+
+  def execute
+    @hero.money += 10
+  end
+end
+
 class Reactor
   def initialize
     @functional = false
