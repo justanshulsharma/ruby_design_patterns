@@ -37,7 +37,9 @@ describe "Observer Pattern" do
 
     it "activates curse" do
       hero = Hero.new
-      tile = Tile.new cursed: true, hero: hero
+      tile = Tile.new cursed: true
+
+      hero.discover(tile)
 
       tile.activate_curse
       expect(hero.health).to eq(6)
